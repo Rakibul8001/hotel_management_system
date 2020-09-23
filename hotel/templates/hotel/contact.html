@@ -1,0 +1,7 @@
+{% extends 'hotel/base.html'%}
+
+{% block content %}
+{% for user in users %}
+<h1>{{ user.username }}</h1>
+{% endfor %}
+{% endblock %}

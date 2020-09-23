@@ -1,0 +1,30 @@
+{% extends 'hotel/base.html' %}
+{% block styles %}
+  <style>
+    .card{
+      margin-top: 20px;
+    }
+  </style>
+{% endblock %}
+{% block content %}
+<div class="row">
+  <!-- left column -->
+  <div class="col-md-6 offset-md-3">
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Add Hotel</h3>
+      </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+    <form method = 'POST' enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="card-body">
+        {{ form.as_p }}
+        <input type="submit"value="Submit" class="btn btn-success">
+      </div>
+
+    </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

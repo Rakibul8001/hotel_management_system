@@ -1,0 +1,53 @@
+{% extends 'hotel/base.html' %}
+{% block styles %}
+  <style>
+    .card{
+      margin-top: 25px;
+    }
+  </style>
+{% endblock %}
+{% block content %}
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-6 offset-md-3">
+        <p>If you have not created an account, please <a href="{% url 'register' %}">Sign up</a> first.</p>
+        <div class="card card-primary">
+          <div class="card-header">
+            {% if messages %}
+              {% for message in messages %}
+                <h3 class="card-title" style ='color:red' >{{ message }}!!</h3>
+              {% endfor %}
+            {% else %}
+              <h3 class="card-title">User Login</h3>
+            {% endif %}
+
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="card-body">
+              <div class="form-group">
+                <label for="exampleInputEmail1">User Name</label>
+                <input type="text" name="username" class="form-control" id="exampleInputEmail1" placeholder="User Name">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password"name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+            </div>
+            <!-- /.card-body -->
+
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Login</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+{% endblock %}
